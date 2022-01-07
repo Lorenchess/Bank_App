@@ -10,14 +10,21 @@ public class Cashier extends Employee{
     }
 
     public void attendCustomer () {
-
+        System.out.println("Hi, how may I help you?");
     }
 
-    public void processDeposits () {
-
+    public double processDeposits (Customer customer, double amount) {
+        System.out.println("Your deposit was made successfully!");
+        return customer.getMoneyInBank() + amount;
     }
 
-    public void processWithdrawal () {
-
+    public double processWithdrawal (Customer customer, double amount) {
+       if (customer.getMoneyInBank() <= amount) {
+           System.out.println("Withdrawal was made. Your current balance is: $" + customer.getMoneyInBank());
+           return customer.getMoneyInBank() - amount;
+       } else {
+           System.out.println("I am sorry, we cannot proceed your request. Current balance is less than withdrawal requested");
+       }
+       return customer.getMoneyInBank();
     }
 }

@@ -1,10 +1,8 @@
 package model;
 
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Set;
-import java.util.regex.Pattern;
+
 
 public class SalesRepresentative extends Employee {
   Map<String, Customer> bankCustomers = new HashMap<>();
@@ -18,11 +16,12 @@ public class SalesRepresentative extends Employee {
     }
 
     public void openCustomerAccount (String fullName, String email,String phoneNumber, String address, String id,
-                                     int creditScore, int creditCardNumber, double moneyInBank) {
+                                     int creditScore, int creditCardNumber, double moneyInBank, double amount) {
       int counter = 0;
       counter++;
       bankCustomers.put(String.valueOf(counter), new Customer(fullName,email, phoneNumber, address, id, creditScore,
               creditCardNumber, moneyInBank));
+      processDeposits(amount, moneyInBank);
       System.out.println("Your account was successfully open!");
     }
 
@@ -51,15 +50,20 @@ public class SalesRepresentative extends Employee {
     }
 
     public void processCustomerRequestLoan (Customer customer, double amount) {
-      if (checkCustomerCreditScore(customer) && !customer.isHasLoan()) {
+      if (checkCustomerCreditScore(customer) && !customer.hasLoan()) {
         System.out.println("Processing your request for a: $" + amount);
+        processDeposits(amount, customer.getMoneyInBank());
       }
       else {
         System.out.println("I am sorry, we cannot process your request.");
       }
     }
 
-    public void closeCustomerAccount () {
-
+    public void closeCustomerAccount (Customer customer) {
+      for (Map.Entry<String, Customer> entry: bankCustomers.entrySet()) {
+        if (entry.getValue().equals(customer.getEmail())) {
+          bankCustomers.remove(entry.getValue());
+        }
+      }
     }
 }

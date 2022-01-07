@@ -75,11 +75,13 @@ public class Bank {
         System.out.println("Closing the bank for customers");
     }
 
-    public void approveLoan (Customer customer, double amount) {
+    public Customer approveLoan (Customer customer, double amount) {
         salesRepresentative.processCustomerRequestLoan(customer, amount);
         if (amount < this.money) {
             System.out.println("Congrats, the bank is approving your request of loan");
-            double total = customer.getMoneyInBank() + amount;
+
+
         }
+        return customer;
     }
 }

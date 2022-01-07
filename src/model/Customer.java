@@ -62,7 +62,7 @@ public class Customer {
         return moneyInBank;
     }
 
-    public boolean isHasLoan() {
+    public boolean hasLoan() {
         return hasLoan;
     }
 
@@ -99,11 +99,12 @@ public class Customer {
         if (this == o) return true;
         if (!(o instanceof Customer)) return false;
         Customer customer = (Customer) o;
-        return getCreditScore() == customer.getCreditScore() && creditCardNumber == customer.creditCardNumber && Double.compare(customer.getMoneyInBank(), getMoneyInBank()) == 0 && isHasLoan() == customer.isHasLoan() && fullName.equals(customer.fullName) && getEmail().equals(customer.getEmail()) && getPhoneNumber().equals(customer.getPhoneNumber()) && getAddress().equals(customer.getAddress()) && getId().equals(customer.getId());
+        return getCreditScore() == customer.getCreditScore() && creditCardNumber == customer.creditCardNumber && Double.compare(customer.getMoneyInBank(), getMoneyInBank()) == 0 && hasLoan() == customer.hasLoan() && fullName.equals(customer.fullName) && getEmail().equals(customer.getEmail()) && getPhoneNumber().equals(customer.getPhoneNumber()) && getAddress().equals(customer.getAddress()) && getId().equals(customer.getId());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(fullName, getEmail(), getPhoneNumber(), getAddress(), getId(), getCreditScore(), creditCardNumber, getMoneyInBank(), isHasLoan());
+        return Objects.hash(fullName, getEmail(), getPhoneNumber(), getAddress(), getId(), getCreditScore(),
+                creditCardNumber, getMoneyInBank(), hasLoan());
     }
 }
