@@ -1,23 +1,18 @@
 package model;
 
-import java.util.Random;
+import java.util.*;
 import java.util.regex.Pattern;
 
 public class Employee implements SignIn_Out{
     private String fullName;
     private String email;
     private String phoneNumber;
-    private int id;
-
-    /* Fields to generate a random ID with 4 digits */
-    private int max = 100;
-    private Random randomNumber = new Random();
-    private int randomId = randomNumber.nextInt(max) + 1000;
+    private String id;
 
     private String emailRegex = "^(.+)@(.+).com$";
     private Pattern patternEmail = Pattern.compile(emailRegex);
 
-    public Employee(String fullName, String email, String phoneNumber, int randomId) {
+    public Employee(String fullName, String email, String phoneNumber, String id) {
         if (!patternEmail.matcher(email).matches()) {
             throw new IllegalArgumentException("Illegal email address. Please type your email following the pattern :" +
                     " name@domain.com");
@@ -25,8 +20,10 @@ public class Employee implements SignIn_Out{
         this.fullName = fullName;
         this.email = email;
         this.phoneNumber = phoneNumber;
-        this.id = randomId;
+        this.id = id;
     }
+
+
 
     @Override
     public void signIn() {
@@ -50,7 +47,7 @@ public class Employee implements SignIn_Out{
         return phoneNumber;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 }
