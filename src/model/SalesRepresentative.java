@@ -11,7 +11,17 @@ public class SalesRepresentative extends Employee {
         super(fullName, email, phoneNumber, id);
     }
 
-    public void attendCustomer () {
+  @Override
+  public void signIn() {
+    System.out.println("Representative: " +(fullName) + " is signing in...");
+  }
+
+  @Override
+  public void signOut() {
+    System.out.println("Representative: " +(fullName) + " is signing out...");
+  }
+
+  public void attendCustomer () {
         System.out.println("Hi, how may I help you?");
     }
 

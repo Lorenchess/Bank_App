@@ -3,11 +3,13 @@ package model;
 import java.util.*;
 import java.util.regex.Pattern;
 
-public class Employee implements SignIn_Out{
-    private String fullName;
-    private String email;
-    private String phoneNumber;
-    private String id;
+/* Abstract & Superclass */
+
+public abstract class Employee implements SignIn_Out{
+    protected String fullName;
+    protected String email;
+    protected String phoneNumber;
+    protected String id;
 
     private String emailRegex = "^(.+)@(.+).com$";
     private Pattern patternEmail = Pattern.compile(emailRegex);
@@ -23,31 +25,13 @@ public class Employee implements SignIn_Out{
         this.id = id;
     }
 
-
+    /* Abstract Methods */
+    @Override
+    public abstract void signIn();
 
     @Override
-    public void signIn() {
-        System.out.println("Employee is signing in...");
-    }
+    public abstract void signOut();
 
-    @Override
-    public void signOut() {
-        System.out.println("Employee is signing out...");
-    }
 
-    public String getFullName() {
-        return fullName;
-    }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public String getId() {
-        return id;
-    }
 }

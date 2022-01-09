@@ -20,7 +20,7 @@ public class Manager extends Employee{
 
     private void verifyEmployeeId (Employee employee) {
         for (RedIds redId : redIds) {
-            if (employee.getId().equals(redId.toString())) {
+            if (employee.id.equals(redId.toString())) {
                 System.out.println("I am sorry, your records are not clean.");
             } else {
                 System.out.println("ID verification passed!");
@@ -55,6 +55,16 @@ public class Manager extends Employee{
 
     public void approveCustomerLoans (Employee employee) {
         verifyEmployeeId(employee);
+    }
+
+    @Override
+    public void signIn() {
+        System.out.println("Manager: " + (fullName) + " is signing in...");
+    }
+
+    @Override
+    public void signOut() {
+        System.out.println("Manager: " + (fullName) + " is signing out...");
     }
 
 }

@@ -1,9 +1,6 @@
 package model;
 
-import java.util.regex.Pattern;
-
 public class Cashier extends Employee{
-
 
     public Cashier(String fullName, String email, String phoneNumber, String id) {
         super(fullName, email, phoneNumber, id);
@@ -26,5 +23,15 @@ public class Cashier extends Employee{
            System.out.println("I am sorry, we cannot proceed your request. Current balance is less than withdrawal requested");
        }
        return customer.getMoneyInBank();
+    }
+
+    @Override
+    public void signIn() {
+        System.out.println("Cashier: " +(fullName) + " is signing in...");
+    }
+
+    @Override
+    public void signOut() {
+        System.out.println("Cashier: " +(fullName) + " is signing out...");
     }
 }
